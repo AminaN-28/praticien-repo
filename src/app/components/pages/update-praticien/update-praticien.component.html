@@ -1,0 +1,62 @@
+
+
+  <div class="overflow-auto p-3 shadow-md border border-1 mt-4 m-auto rounded-lg bg-[#407076]">
+    <div class="items-center p-3 w-auto">
+        <h2 class="text-white py-4 px-10 font-medium text-2xl"mat-dialog-title>Modifier un Praticien</h2>
+    </div>
+    <hr class="text-white" />
+</div>
+<div class="bg-white p-3 mt-4 w-auto mb-12 rounded-lg shadow-md border border-1">
+<mat-dialog-content style="color:black" class="w-full">
+  <form [formGroup]="praticienForm" >
+    <mat-form-field appearance="fill">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="lastname" required class="ml-12 mt-2 w-full"/>
+      <mat-error *ngIf="praticienForm.get('lastname')?.hasError('required')">Le nom est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="firstname" required class="ml-12 mt-2 w-full" />
+      <mat-error *ngIf="praticienForm.get('firstname')?.hasError('required')">Le prénom est requis.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required email class="ml-12 mt-2 w-full" />
+      <mat-error *ngIf="praticienForm.get('email')?.hasError('required')">L'email est requis.</mat-error>
+      <mat-error *ngIf="praticienForm.get('email')?.hasError('email')">Email invalide.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Téléphone</mat-label>
+      <input matInput formControlName="phone" required pattern="^[0-9]{10}$" class="ml-12 mt-2 w-full" />
+      <mat-error *ngIf="praticienForm.get('phone')?.hasError('required')">Le téléphone est requis.</mat-error>
+      <mat-error *ngIf="praticienForm.get('phone')?.hasError('pattern')">Le téléphone doit comporter 10 chiffres.</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Addresse</mat-label>
+      <input matInput formControlName="adresses" required class="ml-12 mt-2 w-full" />
+      <mat-error *ngIf="praticienForm.get('adresses')?.hasError('required')">L'adresse est requis.</mat-error>
+      <mat-error *ngIf="praticienForm.get('adresses')?.hasError('pattern')">L'adresse doit etre rempli.</mat-error>
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Specialité</mat-label>
+      <input matInput formControlName="specialities" required class="ml-12 mt-2 w-full" />
+      <mat-error *ngIf="praticienForm.get('specialities')?.hasError('required')">La specialite est requis.</mat-error>
+      <mat-error *ngIf="praticienForm.get('specialities')?.hasError('pattern')">La specialite doit etre rempli.</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Annuler</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="praticienForm.invalid">Enregistrer</button>
+</mat-dialog-actions>
+</div>
+

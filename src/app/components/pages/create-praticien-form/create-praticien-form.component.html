@@ -1,0 +1,105 @@
+<div class="flex flex-col">
+         <div class="overflow-auto p-3 shadow-md border border-1 mt-4 m-auto rounded-lg bg-[#407076]">
+             <div class="items-center p-3 w-auto">
+                 <h2 class="text-white py-4 px-10 font-medium text-2xl">Gestion des Praticiens</h2>
+             </div>
+             <hr class="text-white" />
+         </div>
+         <div class="p-3" (click)="goToList()">  
+            <button type="submit" class="bg-[#407076] text-white p-3 float-start rounded-lg shadow-md">
+            Listes des Praticiens
+            </button>
+         </div>
+         
+         <div class="bg-white p-3 mt-4 w-auto ml-12 mr-12 mb-12 rounded-lg shadow-md border border-1">
+
+       
+             <form class="m-auto" (submit)="onSubmit()" [formGroup]="praticienForm">
+                 <div class="w-auto flex flex-col space-y-4">
+                     <mat-form-field appearance="outline" class="ml-12 mt-2 w-full">
+                        <label class="p-3">Prénom</label>
+
+                         <input type="text" matInput placeholder="Saisissez le prenom du praticien" required formControlName="firstname" />
+                     </mat-form-field>
+    
+                     <mat-form-field appearance="outline" class="ml-12 mt-2 w-full">
+                        <label class="p-3">Nom</label>
+
+                         <input type="text" matInput placeholder="Saisissez le nom du praticien" required formControlName="lastname" />
+                     </mat-form-field>
+    
+                     <mat-form-field appearance="outline" class="ml-12 mt-2 w-full">
+                        <label class="p-3">Email</label>
+
+                         <input type="email" matInput placeholder="Saisissez l'email du praticien" required formControlName="email" />
+                     </mat-form-field>
+    
+                     <mat-form-field appearance="outline" class="ml-12 mt-2 w-full">
+                        <label class="p-3">Téléphone</label>
+
+                         <input type="text" matInput placeholder="Saisissez le Téléphone" required formControlName="phone" />
+                     </mat-form-field>
+                 </div>
+    
+                 <!-- Address Fields Section -->
+                
+                 <section class="w-auto flex flex-col ml-12 mt-4">
+                     <label class="p-3">Adresses</label>
+                     <div formArrayName="adresses">
+                        <div *ngFor="let address of adresses.controls; let i = index">
+                          <input [formControlName]="i" [placeholder]="'Adresse ' + (i + 1)"  class="mt-2"/>
+                        </div>
+                      </div>
+                    
+                    
+                     <!-- <div class="flex flex-wrap gap-4">
+                         <mat-form-field appearance="outline" class="flex-1">
+                             <input type="text" matInput placeholder="Adresse Bureau" required formControlName="addressOffice" />
+                         </mat-form-field>
+                         <mat-form-field appearance="outline" class="flex-1">
+                             <input type="text" matInput placeholder="Adresse Officielle" required formControlName="addressOfficial" />
+                         </mat-form-field>
+                         <mat-form-field appearance="outline" class="flex-1">
+                             <input type="text" matInput placeholder="Adresse Domicile" required formControlName="addressHome" />
+                         </mat-form-field>
+                     </div> -->
+                 </section>
+    
+                 <!-- Specialties Section -->
+              <!-- Specialties Section -->
+              <section class="m-auto rounded-lg mb-4">
+                 <h4 class="p-3">Spécialités</h4>
+                 <mat-chip-grid #templateChipGrid aria-label="Enter template form keywords">
+                     @for (keyword of templateKeywords(); track keyword) {
+                       <mat-chip-row (removed)="removeTemplateKeyword(keyword)">
+                         {{keyword}}
+                       <button matChipRemove aria-label="'remove template form' + keyword">
+                         <mat-icon>cancel</mat-icon>
+                       </button>
+                       </mat-chip-row>
+                     }
+                     </mat-chip-grid>
+                 <mat-form-field class="example-form-field" appearance="outline">
+                     <mat-label>Spécialités</mat-label>
+                     <input
+                         class="bg-[#407076] border border-b border-3 text-white"
+                         style="background-color: #407076;"
+                         placeholder="New keyword..."
+                         matChipInput
+                         [matChipInputFor]="templateChipGrid"
+                         formControlName="specialities"
+                         (matChipInputTokenEnd)="addTemplateKeyword($event)"
+                     />
+                 </mat-form-field>
+             </section>
+    
+                 <button type="submit" class="bg-[#407076] text-white p-3 float-end rounded-lg shadow-md">
+                     Enregistrer
+                 </button>
+
+                 
+             </form>
+         </div>
+     </div>
+    
+    

@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="overflow-auto p-3 shadow-md border border-1 mt-4 m-auto rounded-lg bg-[#407076]">
+        <div class="items-center p-3 w-auto">
+            <h2 class="text-white py-4 px-10 font-medium text-2xl"> 
+                     <span class="text-white py-4 px-10 font-medium text-sm flex flex-row" (click)="goBack()"><mat-icon class="text-sm">arrow_back_ios</mat-icon> </span>Listes des Praticiens</h2>
+        </div>
+        
+        <hr class="text-white" />
+    </div>
+
+    <div class="mt-4">
+        <table  mat-table [dataSource]="praticiens" class="mat-elevation-z8 bg-white text-black" style="background-color: white; color: black;">
+  
+            <!-- Colonne Nom -->
+            <ng-container matColumnDef="nom">
+              <th mat-header-cell *matHeaderCellDef> Nom </th>
+              <td mat-cell *matCellDef="let praticien" class=""> {{ praticien.lastname }} </td>
+            </ng-container>
+        
+            <!-- Colonne Prénom -->
+            <ng-container matColumnDef="prenom">
+              <th mat-header-cell *matHeaderCellDef> Prénom </th>
+              <td mat-cell *matCellDef="let praticien"> {{ praticien.firstname }} </td>
+            </ng-container>
+        
+            <!-- Colonne Email -->
+            <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef> Email </th>
+              <td mat-cell *matCellDef="let praticien"> {{ praticien.email }} </td>
+            </ng-container>
+        
+            <!-- Colonne Téléphone -->
+            <ng-container matColumnDef="phone">
+              <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+              <td mat-cell *matCellDef="let praticien"> {{ praticien.phone }} </td>
+            </ng-container>
+        
+            <!-- Colonne Specialité -->
+            <ng-container matColumnDef="specialities">
+                <th mat-header-cell *matHeaderCellDef> Specialité </th>
+                <td mat-cell *matCellDef="let praticien"> {{ praticien.specialities }} </td>
+              </ng-container>
+
+              <!-- Colonne Adresse -->
+            <ng-container matColumnDef="adresses">
+                <th mat-header-cell *matHeaderCellDef> Addresse </th>
+                <td mat-cell *matCellDef="let praticien"> {{ praticien.adresses }} </td>
+              </ng-container>
+          
+            <!-- Colonne Actions -->
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef> Actions </th>
+              <td mat-cell *matCellDef="let praticien; let i = index">
+                <button mat-icon-button color="primary" (click)="editPraticien(praticien)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deletePraticien(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+    </div>
+
+    
+   
+  </div>
+  

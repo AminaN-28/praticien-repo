@@ -1,0 +1,63 @@
+mat-label.items-center {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin: 5px 0;
+  }
+  
+  input[matInput] {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    outline: none;
+  }
+  
+  input[matInput]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  .example-form-field {
+    width: 100%;
+}
+
+.example-form-field {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+ 
+  input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #333232;
+    width: 100%;
+  }
+  
+  mat-chip-grid {
+    margin-bottom: 10px;
+  }
+  
+  mat-chip-row {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  mat-chip-row button {
+    margin-left: 8px;
+  }
+  
+  mat-chip-remove {
+    font-size: 18px;
+    color: #ff4081;
+  }
+  
